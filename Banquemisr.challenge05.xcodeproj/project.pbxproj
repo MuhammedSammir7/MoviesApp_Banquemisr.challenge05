@@ -101,14 +101,15 @@
 		81822E2B2CA5F08F0089F97D /* Banquemisr.challenge05 */ = {
 			isa = PBXGroup;
 			children = (
+				81822E642CA5F0F00089F97D /* View */,
+				81822E632CA5F0E80089F97D /* Model */,
+				81822E602CA5F0D00089F97D /* Services */,
+				81822E5F2CA5F0C60089F97D /* Modules */,
 				81822E2C2CA5F08F0089F97D /* AppDelegate.swift */,
 				81822E2E2CA5F08F0089F97D /* SceneDelegate.swift */,
 				81822E302CA5F08F0089F97D /* ViewController.swift */,
-				81822E322CA5F08F0089F97D /* Main.storyboard */,
 				81822E382CA5F0920089F97D /* Assets.xcassets */,
-				81822E3A2CA5F0920089F97D /* LaunchScreen.storyboard */,
 				81822E3D2CA5F0920089F97D /* Info.plist */,
-				81822E352CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld */,
 			);
 			path = Banquemisr.challenge05;
 			sourceTree = "<group>";
@@ -128,6 +129,53 @@
 				81822E522CA5F0930089F97D /* Banquemisr_challenge05UITestsLaunchTests.swift */,
 			);
 			path = Banquemisr.challenge05UITests;
+			sourceTree = "<group>";
+		};
+		81822E5F2CA5F0C60089F97D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		81822E602CA5F0D00089F97D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				81822E622CA5F0E00089F97D /* Local */,
+				81822E612CA5F0D90089F97D /* Remote */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		81822E612CA5F0D90089F97D /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		81822E622CA5F0E00089F97D /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				81822E352CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		81822E632CA5F0E80089F97D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		81822E642CA5F0F00089F97D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				81822E3A2CA5F0920089F97D /* LaunchScreen.storyboard */,
+				81822E322CA5F08F0089F97D /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
