@@ -1,0 +1,618 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		81822E2D2CA5F08F0089F97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E2C2CA5F08F0089F97D /* AppDelegate.swift */; };
+		81822E2F2CA5F08F0089F97D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E2E2CA5F08F0089F97D /* SceneDelegate.swift */; };
+		81822E312CA5F08F0089F97D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E302CA5F08F0089F97D /* ViewController.swift */; };
+		81822E342CA5F08F0089F97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81822E322CA5F08F0089F97D /* Main.storyboard */; };
+		81822E372CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81822E352CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld */; };
+		81822E392CA5F0920089F97D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81822E382CA5F0920089F97D /* Assets.xcassets */; };
+		81822E3C2CA5F0920089F97D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81822E3A2CA5F0920089F97D /* LaunchScreen.storyboard */; };
+		81822E472CA5F0930089F97D /* Banquemisr_challenge05Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E462CA5F0930089F97D /* Banquemisr_challenge05Tests.swift */; };
+		81822E512CA5F0930089F97D /* Banquemisr_challenge05UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E502CA5F0930089F97D /* Banquemisr_challenge05UITests.swift */; };
+		81822E532CA5F0930089F97D /* Banquemisr_challenge05UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E522CA5F0930089F97D /* Banquemisr_challenge05UITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81822E432CA5F0930089F97D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81822E212CA5F08F0089F97D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81822E282CA5F08F0089F97D;
+			remoteInfo = Banquemisr.challenge05;
+		};
+		81822E4D2CA5F0930089F97D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81822E212CA5F08F0089F97D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81822E282CA5F08F0089F97D;
+			remoteInfo = Banquemisr.challenge05;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		81822E292CA5F08F0089F97D /* Banquemisr.challenge05.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Banquemisr.challenge05.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81822E2C2CA5F08F0089F97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81822E2E2CA5F08F0089F97D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		81822E302CA5F08F0089F97D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81822E332CA5F08F0089F97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		81822E362CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Banquemisr_challenge05.xcdatamodel; sourceTree = "<group>"; };
+		81822E382CA5F0920089F97D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		81822E3B2CA5F0920089F97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81822E3D2CA5F0920089F97D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81822E422CA5F0930089F97D /* Banquemisr.challenge05Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Banquemisr.challenge05Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81822E462CA5F0930089F97D /* Banquemisr_challenge05Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banquemisr_challenge05Tests.swift; sourceTree = "<group>"; };
+		81822E4C2CA5F0930089F97D /* Banquemisr.challenge05UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Banquemisr.challenge05UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81822E502CA5F0930089F97D /* Banquemisr_challenge05UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banquemisr_challenge05UITests.swift; sourceTree = "<group>"; };
+		81822E522CA5F0930089F97D /* Banquemisr_challenge05UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banquemisr_challenge05UITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		81822E262CA5F08F0089F97D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81822E3F2CA5F0930089F97D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81822E492CA5F0930089F97D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		81822E202CA5F08F0089F97D = {
+			isa = PBXGroup;
+			children = (
+				81822E2B2CA5F08F0089F97D /* Banquemisr.challenge05 */,
+				81822E452CA5F0930089F97D /* Banquemisr.challenge05Tests */,
+				81822E4F2CA5F0930089F97D /* Banquemisr.challenge05UITests */,
+				81822E2A2CA5F08F0089F97D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		81822E2A2CA5F08F0089F97D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81822E292CA5F08F0089F97D /* Banquemisr.challenge05.app */,
+				81822E422CA5F0930089F97D /* Banquemisr.challenge05Tests.xctest */,
+				81822E4C2CA5F0930089F97D /* Banquemisr.challenge05UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		81822E2B2CA5F08F0089F97D /* Banquemisr.challenge05 */ = {
+			isa = PBXGroup;
+			children = (
+				81822E2C2CA5F08F0089F97D /* AppDelegate.swift */,
+				81822E2E2CA5F08F0089F97D /* SceneDelegate.swift */,
+				81822E302CA5F08F0089F97D /* ViewController.swift */,
+				81822E322CA5F08F0089F97D /* Main.storyboard */,
+				81822E382CA5F0920089F97D /* Assets.xcassets */,
+				81822E3A2CA5F0920089F97D /* LaunchScreen.storyboard */,
+				81822E3D2CA5F0920089F97D /* Info.plist */,
+				81822E352CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld */,
+			);
+			path = Banquemisr.challenge05;
+			sourceTree = "<group>";
+		};
+		81822E452CA5F0930089F97D /* Banquemisr.challenge05Tests */ = {
+			isa = PBXGroup;
+			children = (
+				81822E462CA5F0930089F97D /* Banquemisr_challenge05Tests.swift */,
+			);
+			path = Banquemisr.challenge05Tests;
+			sourceTree = "<group>";
+		};
+		81822E4F2CA5F0930089F97D /* Banquemisr.challenge05UITests */ = {
+			isa = PBXGroup;
+			children = (
+				81822E502CA5F0930089F97D /* Banquemisr_challenge05UITests.swift */,
+				81822E522CA5F0930089F97D /* Banquemisr_challenge05UITestsLaunchTests.swift */,
+			);
+			path = Banquemisr.challenge05UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		81822E282CA5F08F0089F97D /* Banquemisr.challenge05 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81822E562CA5F0930089F97D /* Build configuration list for PBXNativeTarget "Banquemisr.challenge05" */;
+			buildPhases = (
+				81822E252CA5F08F0089F97D /* Sources */,
+				81822E262CA5F08F0089F97D /* Frameworks */,
+				81822E272CA5F08F0089F97D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Banquemisr.challenge05;
+			productName = Banquemisr.challenge05;
+			productReference = 81822E292CA5F08F0089F97D /* Banquemisr.challenge05.app */;
+			productType = "com.apple.product-type.application";
+		};
+		81822E412CA5F0930089F97D /* Banquemisr.challenge05Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81822E592CA5F0930089F97D /* Build configuration list for PBXNativeTarget "Banquemisr.challenge05Tests" */;
+			buildPhases = (
+				81822E3E2CA5F0930089F97D /* Sources */,
+				81822E3F2CA5F0930089F97D /* Frameworks */,
+				81822E402CA5F0930089F97D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81822E442CA5F0930089F97D /* PBXTargetDependency */,
+			);
+			name = Banquemisr.challenge05Tests;
+			productName = Banquemisr.challenge05Tests;
+			productReference = 81822E422CA5F0930089F97D /* Banquemisr.challenge05Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		81822E4B2CA5F0930089F97D /* Banquemisr.challenge05UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81822E5C2CA5F0930089F97D /* Build configuration list for PBXNativeTarget "Banquemisr.challenge05UITests" */;
+			buildPhases = (
+				81822E482CA5F0930089F97D /* Sources */,
+				81822E492CA5F0930089F97D /* Frameworks */,
+				81822E4A2CA5F0930089F97D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81822E4E2CA5F0930089F97D /* PBXTargetDependency */,
+			);
+			name = Banquemisr.challenge05UITests;
+			productName = Banquemisr.challenge05UITests;
+			productReference = 81822E4C2CA5F0930089F97D /* Banquemisr.challenge05UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81822E212CA5F08F0089F97D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					81822E282CA5F08F0089F97D = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					81822E412CA5F0930089F97D = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 81822E282CA5F08F0089F97D;
+					};
+					81822E4B2CA5F0930089F97D = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 81822E282CA5F08F0089F97D;
+					};
+				};
+			};
+			buildConfigurationList = 81822E242CA5F08F0089F97D /* Build configuration list for PBXProject "Banquemisr.challenge05" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 81822E202CA5F08F0089F97D;
+			productRefGroup = 81822E2A2CA5F08F0089F97D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81822E282CA5F08F0089F97D /* Banquemisr.challenge05 */,
+				81822E412CA5F0930089F97D /* Banquemisr.challenge05Tests */,
+				81822E4B2CA5F0930089F97D /* Banquemisr.challenge05UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		81822E272CA5F08F0089F97D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81822E3C2CA5F0920089F97D /* LaunchScreen.storyboard in Resources */,
+				81822E392CA5F0920089F97D /* Assets.xcassets in Resources */,
+				81822E342CA5F08F0089F97D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81822E402CA5F0930089F97D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81822E4A2CA5F0930089F97D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81822E252CA5F08F0089F97D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81822E312CA5F08F0089F97D /* ViewController.swift in Sources */,
+				81822E372CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld in Sources */,
+				81822E2D2CA5F08F0089F97D /* AppDelegate.swift in Sources */,
+				81822E2F2CA5F08F0089F97D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81822E3E2CA5F0930089F97D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81822E472CA5F0930089F97D /* Banquemisr_challenge05Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81822E482CA5F0930089F97D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81822E532CA5F0930089F97D /* Banquemisr_challenge05UITestsLaunchTests.swift in Sources */,
+				81822E512CA5F0930089F97D /* Banquemisr_challenge05UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81822E442CA5F0930089F97D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81822E282CA5F08F0089F97D /* Banquemisr.challenge05 */;
+			targetProxy = 81822E432CA5F0930089F97D /* PBXContainerItemProxy */;
+		};
+		81822E4E2CA5F0930089F97D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81822E282CA5F08F0089F97D /* Banquemisr.challenge05 */;
+			targetProxy = 81822E4D2CA5F0930089F97D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		81822E322CA5F08F0089F97D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81822E332CA5F08F0089F97D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		81822E3A2CA5F0920089F97D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81822E3B2CA5F0920089F97D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		81822E542CA5F0930089F97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		81822E552CA5F0930089F97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		81822E572CA5F0930089F97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Banquemisr.challenge05/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.Banquemisr-challenge05";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		81822E582CA5F0930089F97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Banquemisr.challenge05/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.Banquemisr-challenge05";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		81822E5A2CA5F0930089F97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.Banquemisr-challenge05Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Banquemisr.challenge05.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Banquemisr.challenge05";
+			};
+			name = Debug;
+		};
+		81822E5B2CA5F0930089F97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.Banquemisr-challenge05Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Banquemisr.challenge05.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Banquemisr.challenge05";
+			};
+			name = Release;
+		};
+		81822E5D2CA5F0930089F97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.Banquemisr-challenge05UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Banquemisr.challenge05;
+			};
+			name = Debug;
+		};
+		81822E5E2CA5F0930089F97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.Banquemisr-challenge05UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Banquemisr.challenge05;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81822E242CA5F08F0089F97D /* Build configuration list for PBXProject "Banquemisr.challenge05" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81822E542CA5F0930089F97D /* Debug */,
+				81822E552CA5F0930089F97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81822E562CA5F0930089F97D /* Build configuration list for PBXNativeTarget "Banquemisr.challenge05" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81822E572CA5F0930089F97D /* Debug */,
+				81822E582CA5F0930089F97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81822E592CA5F0930089F97D /* Build configuration list for PBXNativeTarget "Banquemisr.challenge05Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81822E5A2CA5F0930089F97D /* Debug */,
+				81822E5B2CA5F0930089F97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81822E5C2CA5F0930089F97D /* Build configuration list for PBXNativeTarget "Banquemisr.challenge05UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81822E5D2CA5F0930089F97D /* Debug */,
+				81822E5E2CA5F0930089F97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		81822E352CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				81822E362CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodel */,
+			);
+			currentVersion = 81822E362CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodel */;
+			path = Banquemisr_challenge05.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 81822E212CA5F08F0089F97D /* Project object */;
+}
