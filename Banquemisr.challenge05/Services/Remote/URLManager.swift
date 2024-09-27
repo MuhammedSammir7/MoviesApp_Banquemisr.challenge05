@@ -14,11 +14,13 @@ class URLManager: URLManagerProtocol {
             case .popular:
                 return "/popular"
             case .upComing:
-                return "/upComing"
+                return "/upcoming"
             case .nowPlaying:
-                return "/nowPlaying"
+                return "/now_playing"
             case .details(let movie_id):
                 return "/\(movie_id)"
+            case .base:
+                return ""
             }
     }
     func getUrl(for endPoint: EndPoint)-> String{
@@ -33,5 +35,7 @@ enum EndPoint: Any {
     case upComing
     case nowPlaying
     case details(movie_id: Int)
+    case base
+
   
 }

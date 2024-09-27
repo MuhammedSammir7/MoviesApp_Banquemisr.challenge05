@@ -40,6 +40,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5Do-Bl-hyo"/>
+                    <connections>
+                        <outlet property="nowPlayingTableView" destination="tdy-Bc-56y" id="UE3-3Y-M2J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
