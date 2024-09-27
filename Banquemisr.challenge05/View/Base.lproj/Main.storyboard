@@ -117,6 +117,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="47b-na-4Hf"/>
+                    <connections>
+                        <outlet property="upComingTableView" destination="zrd-Ir-zFI" id="DrU-JC-71v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RB-bU-pre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
