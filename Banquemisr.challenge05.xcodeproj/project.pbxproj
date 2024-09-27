@@ -23,6 +23,8 @@
 		81822E752CA63A580089F97D /* PopularMoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E742CA63A580089F97D /* PopularMoviesVC.swift */; };
 		81822E772CA63A6D0089F97D /* UpComingMoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E762CA63A6D0089F97D /* UpComingMoviesVC.swift */; };
 		81822E7C2CA63AB60089F97D /* MovieDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E7B2CA63AB60089F97D /* MovieDetailsVC.swift */; };
+		81822E7E2CA644AB0089F97D /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E7D2CA644AB0089F97D /* URLManager.swift */; };
+		81822E802CA6515D0089F97D /* URLManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E7F2CA6515D0089F97D /* URLManagerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		81822E742CA63A580089F97D /* PopularMoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesVC.swift; sourceTree = "<group>"; };
 		81822E762CA63A6D0089F97D /* UpComingMoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingMoviesVC.swift; sourceTree = "<group>"; };
 		81822E7B2CA63AB60089F97D /* MovieDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVC.swift; sourceTree = "<group>"; };
+		81822E7D2CA644AB0089F97D /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		81822E7F2CA6515D0089F97D /* URLManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLManager\U0010\U0010\U0010\U0010\U0010\U0010\U0010\U0010\U0010\U0010Protocol.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 		81822E612CA5F0D90089F97D /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				81822E7D2CA644AB0089F97D /* URLManager.swift */,
+				81822E7F2CA6515D0089F97D /* URLManagerProtocol.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -425,8 +431,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				81822E752CA63A580089F97D /* PopularMoviesVC.swift in Sources */,
+				81822E802CA6515D0089F97D /* URLManagerProtocol.swift in Sources */,
 				81822E312CA5F08F0089F97D /* ViewController.swift in Sources */,
 				81822E672CA612500089F97D /* MoviesCell.swift in Sources */,
+				81822E7E2CA644AB0089F97D /* URLManager.swift in Sources */,
 				81822E372CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld in Sources */,
 				81822E732CA63A380089F97D /* NowPlayingMoviesVC.swift in Sources */,
 				81822E7C2CA63AB60089F97D /* MovieDetailsVC.swift in Sources */,
