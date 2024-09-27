@@ -13,12 +13,15 @@ class NowPlayingMoviesVC: UIViewController {
     @IBOutlet weak var nowPlayingTableView: UITableView!
 
     var vm : NowPlayingViewModel?
+    var indicator: UIActivityIndicatorView?
+    
     private var cancellables = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupIndecator()
         nowPlayingTableView.delegate = self
         nowPlayingTableView.dataSource = self
         vm = NowPlayingViewModel()
@@ -26,10 +29,19 @@ class NowPlayingMoviesVC: UIViewController {
         vm?.$movies.sink { [weak self] _ in
                     DispatchQueue.main.async {
                         self?.nowPlayingTableView.reloadData()
+                        self?.indicator?.stopAnimating()
                     }
                 }.store(in: &cancellables)
         nowPlayingTableView.register(UINib(nibName: "MoviesCell", bundle: nil), forCellReuseIdentifier: "MoviesCell")
         
+    }
+    func setupIndecator(){
+        indicator = UIActivityIndicatorView(style: .large)
+        guard let indicator = indicator else{return}
+        indicator.center = self.view.center
+        indicator.startAnimating()
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
     }
         
 }
@@ -51,5 +63,14 @@ extension NowPlayingMoviesVC : UITableViewDataSource,UITableViewDelegate{
         return UITableViewCell()
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "MovieDetailsStoryboard", bundle: nil)
+        if let movieDetailsVc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsVC") as? MovieDetailsVC {
+            movieDetailsVc.viewModel.movieId = vm?.movies[indexPath.row].id
+            movieDetailsVc.modalTransitionStyle = .crossDissolve
+            movieDetailsVc.modalPresentationStyle = .fullScreen
+            self.present(movieDetailsVc, animated: true)
+        }
+    }
 }
+
