@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class MoviesCell: UITableViewCell {
 
    
-    @IBOutlet weak var movieGenreLbl: UILabel!
+    private var cancellable: AnyCancellable?
+
+    @IBOutlet weak var movieLanguageLbl: UILabel!
     @IBOutlet weak var movieDateLbl: UILabel!
     @IBOutlet weak var movieNameLbl: UILabel!
     @IBOutlet weak var movieImg: UIImageView!
@@ -24,5 +27,17 @@ class MoviesCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configure(with movie: Movie, viewModel: NowPlayingViewModel) {
+            movieNameLbl.text = movie.title
+            movieLanguageLbl.text = movie.originalLanguage
+            movieDateLbl.text = movie.releaseDate
+            
+            // Fetch and assign the image
+            cancellable = viewModel.fetchImage(for: movie)
+                .sink { [weak self] image in
+                    self?.movieImg.image = image ?? UIImage(named: "placeholder")
+                }
+        }
     
 }
