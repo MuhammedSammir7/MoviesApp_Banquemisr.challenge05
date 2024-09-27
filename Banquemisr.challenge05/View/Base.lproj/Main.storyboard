@@ -80,6 +80,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="z8Q-iA-GzO"/>
+                    <connections>
+                        <outlet property="pubularMoviesTableView" destination="Upj-LX-I6z" id="lZr-8x-WUq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tct-pA-C9H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

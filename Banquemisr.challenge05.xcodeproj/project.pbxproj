@@ -33,6 +33,7 @@
 		81A16CB92CA74E250036045D /* MovieDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81A16CB82CA74E250036045D /* MovieDetailsStoryboard.storyboard */; };
 		81A16CBE2CA76B380036045D /* UpComingMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A16CBD2CA76B380036045D /* UpComingMoviesViewModel.swift */; };
 		81A16CC12CA775530036045D /* FetchImagesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A16CC02CA775530036045D /* FetchImagesProtocol.swift */; };
+		81A16CC32CA77BFA0036045D /* PopularMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A16CC22CA77BFA0036045D /* PopularMoviesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		81A16CB82CA74E250036045D /* MovieDetailsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieDetailsStoryboard.storyboard; sourceTree = "<group>"; };
 		81A16CBD2CA76B380036045D /* UpComingMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingMoviesViewModel.swift; sourceTree = "<group>"; };
 		81A16CC02CA775530036045D /* FetchImagesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImagesProtocol.swift; sourceTree = "<group>"; };
+		81A16CC22CA77BFA0036045D /* PopularMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,7 @@
 		81822E6F2CA637C50089F97D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				81A16CC22CA77BFA0036045D /* PopularMoviesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				81A16CC12CA775530036045D /* FetchImagesProtocol.swift in Sources */,
 				81822E2F2CA5F08F0089F97D /* SceneDelegate.swift in Sources */,
 				81822E882CA672670089F97D /* NetworkManagerProtocol.swift in Sources */,
+				81A16CC32CA77BFA0036045D /* PopularMoviesViewModel.swift in Sources */,
 				81822E772CA63A6D0089F97D /* UpComingMoviesVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
