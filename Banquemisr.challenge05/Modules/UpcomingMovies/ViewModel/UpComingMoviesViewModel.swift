@@ -1,15 +1,15 @@
 //
-//  NowPlayingViewModel.swift
+//  UpComingMoviesViewModel.swift
 //  Banquemisr.challenge05
 //
-//  Created by ios on 27/09/2024.
+//  Created by ios on 28/09/2024.
 //
 
 import Foundation
 import Combine
 import UIKit
 
-class NowPlayingViewModel: MovieViewModelProtocol {
+class UpComingMoviesViewModel: MovieViewModelProtocol {
     private var cancellables = Set<AnyCancellable>()
     private var networkManager: NetworkManagerProtocol?
     var urlManager: URLManagerProtocol?
@@ -21,8 +21,8 @@ class NowPlayingViewModel: MovieViewModelProtocol {
         self.urlManager = URLManager()
     }
     
-    func fetchNowPlayingMovies() {
-        networkManager?.fetch(url: urlManager?.getUrl(for: .nowPlaying) ?? "", type: MoviesResponse.self)
+    func fetchUpComingMovies() {
+        networkManager?.fetch(url: urlManager?.getUrl(for: .upComing) ?? "", type: MoviesResponse.self)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -52,7 +52,7 @@ class NowPlayingViewModel: MovieViewModelProtocol {
                 .map { data, _ in
                     UIImage(data: data)
                 }
-                .catch { _ in Just(nil) }  // In case of an error, return nil
+                .catch { _ in Just(nil) }
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
         }
