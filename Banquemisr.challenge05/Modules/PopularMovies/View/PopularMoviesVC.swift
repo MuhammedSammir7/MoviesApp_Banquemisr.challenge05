@@ -7,12 +7,15 @@
 
 import UIKit
 import Combine
+import Network
 
 class PopularMoviesVC: UIViewController {
 
     @IBOutlet weak var pubularMoviesTableView: UITableView!
     var vm : PopularMoviesViewModel?
     var indicator: UIActivityIndicatorView?
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
     private var cancellables = Set<AnyCancellable>()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +23,23 @@ class PopularMoviesVC: UIViewController {
         setupIndecator()
         pubularMoviesTableView.delegate = self
         pubularMoviesTableView.dataSource = self
+        monitor.pathUpdateHandler = { path in
+                self.isConnected = (path.status == .satisfied)
+                    DispatchQueue.main.async {
+                        if self.isConnected {
+                            //  is online
+                            self.fetchDataFromAPI()
+                        } else {
+                            //  is offline
+                            self.fetchDataFromCoreData()
+                        }
+                    }
+                }
+                
+                let queue = DispatchQueue(label: "NetworkMonitor")
+                monitor.start(queue: queue)
+        
         vm = PopularMoviesViewModel()
-        vm?.fetchNowPlayingMovies()
         vm?.$movies.sink { [weak self] _ in
                     DispatchQueue.main.async {
                         self?.pubularMoviesTableView.reloadData()
@@ -30,6 +48,24 @@ class PopularMoviesVC: UIViewController {
                 }.store(in: &cancellables)
         pubularMoviesTableView.register(UINib(nibName: "MoviesCell", bundle: nil), forCellReuseIdentifier: "MoviesCell")
         
+    }
+    func fetchDataFromAPI(){
+        vm?.fetchPopularMovies()
+        vm?.$movies.sink { [weak self] _ in
+                    DispatchQueue.main.async {
+                        self?.pubularMoviesTableView.reloadData()
+                        self?.indicator?.stopAnimating()
+                    }
+                }.store(in: &cancellables)
+    }
+    func fetchDataFromCoreData(){
+        vm?.loadDatafromCoreData()
+        vm?.$movies.sink { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.pubularMoviesTableView.reloadData()
+                self?.indicator?.stopAnimating()
+            }
+        }.store(in: &cancellables)
     }
     func setupIndecator(){
         indicator = UIActivityIndicatorView(style: .large)

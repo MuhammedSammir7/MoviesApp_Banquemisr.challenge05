@@ -13,6 +13,7 @@ class NowPlayingViewModel: MovieViewModelProtocol {
     private var cancellables = Set<AnyCancellable>()
     private var networkManager: NetworkManagerProtocol?
     var urlManager: URLManagerProtocol?
+    let entityName = "NowPlayingMovies"
     
     @Published var movies: [Movie] = []
     
@@ -36,7 +37,13 @@ class NowPlayingViewModel: MovieViewModelProtocol {
                     return
                     
                 }
-                self?.movies = result
+                guard let self = self else{return}
+                self.movies = result
+                PersistenceManager.shared.deleteAllNews(entityName: self.entityName)
+                for movie in result {
+                    PersistenceManager.shared.storeMovies(movie, entityName: self.entityName)
+                }
+                
             })
             .store(in: &cancellables)
     }
@@ -56,4 +63,23 @@ class NowPlayingViewModel: MovieViewModelProtocol {
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
         }
+    
+    func loadDatafromCoreData() {
+        let storedMovies = PersistenceManager.shared.getMovies(entityName: entityName)
+            for movie in storedMovies {
+                var moviee = Movie(backdropPath: "", id: 0, originalLanguage: "", overview: "", posterPath: "", releaseDate: "", title: "", voteAverage: 0, voteCount: 0)
+                moviee.backdropPath = movie.value(forKey: "backdropPath") as? String
+                moviee.originalLanguage = movie.value(forKey: "originalLanguage") as? String
+                moviee.id = movie.value(forKey: "id") as? Int
+                moviee.posterPath = movie.value(forKey: "posterPath") as? String
+                moviee.title = movie.value(forKey: "title") as? String
+                moviee.releaseDate = movie.value(forKey: "releaseDate") as? String
+                moviee.voteAverage = movie.value(forKey: "voteAverage") as? Double
+                moviee.voteCount = movie.value(forKey: "voteCount") as? Int
+                moviee.overview = movie.value(forKey: "overview") as? String
+                self.movies.append(moviee)
+            }
+        }
+     
 }
+

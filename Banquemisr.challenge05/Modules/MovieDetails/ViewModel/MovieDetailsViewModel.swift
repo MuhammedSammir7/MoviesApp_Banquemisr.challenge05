@@ -16,6 +16,7 @@ class MovieDetailsViewModel{
     var movieId : Int?
     
     @Published var movie: MovieDetailsResponse?
+    var MovieNoConnection = Movie()
     
     init() {
         self.networkManager = NetworkManager()

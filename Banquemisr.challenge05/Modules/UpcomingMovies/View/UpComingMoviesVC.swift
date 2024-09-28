@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Network
 
 class UpComingMoviesVC: UIViewController {
 
@@ -14,13 +15,37 @@ class UpComingMoviesVC: UIViewController {
     var vm : UpComingMoviesViewModel?
     var indicator: UIActivityIndicatorView?
     private var cancellables = Set<AnyCancellable>()
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupIndecator()
         upComingTableView.delegate = self
         upComingTableView.dataSource = self
+        
+        monitor.pathUpdateHandler = { path in
+                self.isConnected = (path.status == .satisfied)
+                    DispatchQueue.main.async {
+                        if self.isConnected {
+                            //  is online
+                            self.fetchDataFromAPI()
+                        } else {
+                            //  is offline
+                            self.fetchDataFromCoreData()
+                        }
+                    }
+                }
+                
+                let queue = DispatchQueue(label: "NetworkMonitor")
+                monitor.start(queue: queue)
+        
         vm = UpComingMoviesViewModel()
+       
+        upComingTableView.register(UINib(nibName: "MoviesCell", bundle: nil), forCellReuseIdentifier: "MoviesCell")
+        
+    }
+    func fetchDataFromAPI(){
         vm?.fetchUpComingMovies()
         vm?.$movies.sink { [weak self] _ in
                     DispatchQueue.main.async {
@@ -28,8 +53,15 @@ class UpComingMoviesVC: UIViewController {
                         self?.indicator?.stopAnimating()
                     }
                 }.store(in: &cancellables)
-        upComingTableView.register(UINib(nibName: "MoviesCell", bundle: nil), forCellReuseIdentifier: "MoviesCell")
-        
+    }
+    func fetchDataFromCoreData(){
+        vm?.loadDatafromCoreData()
+        vm?.$movies.sink { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.upComingTableView.reloadData()
+                self?.indicator?.stopAnimating()
+            }
+        }.store(in: &cancellables)
     }
     
     func setupIndecator(){

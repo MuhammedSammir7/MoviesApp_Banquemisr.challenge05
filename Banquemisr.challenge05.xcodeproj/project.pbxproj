@@ -34,6 +34,7 @@
 		81A16CBE2CA76B380036045D /* UpComingMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A16CBD2CA76B380036045D /* UpComingMoviesViewModel.swift */; };
 		81A16CC12CA775530036045D /* FetchImagesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A16CC02CA775530036045D /* FetchImagesProtocol.swift */; };
 		81A16CC32CA77BFA0036045D /* PopularMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A16CC22CA77BFA0036045D /* PopularMoviesViewModel.swift */; };
+		81A16CC52CA795880036045D /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A16CC42CA795880036045D /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		81A16CBD2CA76B380036045D /* UpComingMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingMoviesViewModel.swift; sourceTree = "<group>"; };
 		81A16CC02CA775530036045D /* FetchImagesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImagesProtocol.swift; sourceTree = "<group>"; };
 		81A16CC22CA77BFA0036045D /* PopularMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewModel.swift; sourceTree = "<group>"; };
+		81A16CC42CA795880036045D /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				81822E352CA5F08F0089F97D /* Banquemisr_challenge05.xcdatamodeld */,
+				81A16CC42CA795880036045D /* PersistenceManager.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				81A16CB72CA71B490036045D /* MovieDetailsViewModel.swift in Sources */,
 				81822E732CA63A380089F97D /* NowPlayingMoviesVC.swift in Sources */,
 				81822E842CA660140089F97D /* NowPlaying.swift in Sources */,
+				81A16CC52CA795880036045D /* PersistenceManager.swift in Sources */,
 				81822E7C2CA63AB60089F97D /* MovieDetailsVC.swift in Sources */,
 				81A16CBE2CA76B380036045D /* UpComingMoviesViewModel.swift in Sources */,
 				81822E2D2CA5F08F0089F97D /* AppDelegate.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Network
 
 class NowPlayingMoviesVC: UIViewController {
 
@@ -14,6 +15,8 @@ class NowPlayingMoviesVC: UIViewController {
 
     var vm : NowPlayingViewModel?
     var indicator: UIActivityIndicatorView?
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
 
@@ -24,7 +27,30 @@ class NowPlayingMoviesVC: UIViewController {
         setupIndecator()
         nowPlayingTableView.delegate = self
         nowPlayingTableView.dataSource = self
+        
+        monitor.pathUpdateHandler = { path in
+                self.isConnected = (path.status == .satisfied)
+                    DispatchQueue.main.async {
+                        if self.isConnected {
+                            //  is online
+                            self.fetchDataFromAPI()
+                        } else {
+                            //  is offline
+                            self.fetchDataFromCoreData()
+                        }
+                    }
+                }
+                
+                let queue = DispatchQueue(label: "NetworkMonitor")
+                monitor.start(queue: queue)
+        
+    
         vm = NowPlayingViewModel()
+        
+        nowPlayingTableView.register(UINib(nibName: "MoviesCell", bundle: nil), forCellReuseIdentifier: "MoviesCell")
+        
+    }
+    func fetchDataFromAPI(){
         vm?.fetchNowPlayingMovies()
         vm?.$movies.sink { [weak self] _ in
                     DispatchQueue.main.async {
@@ -32,8 +58,15 @@ class NowPlayingMoviesVC: UIViewController {
                         self?.indicator?.stopAnimating()
                     }
                 }.store(in: &cancellables)
-        nowPlayingTableView.register(UINib(nibName: "MoviesCell", bundle: nil), forCellReuseIdentifier: "MoviesCell")
-        
+    }
+    func fetchDataFromCoreData(){
+        vm?.loadDatafromCoreData()
+        vm?.$movies.sink { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.nowPlayingTableView.reloadData()
+                self?.indicator?.stopAnimating()
+            }
+        }.store(in: &cancellables)
     }
     func setupIndecator(){
         indicator = UIActivityIndicatorView(style: .large)
@@ -66,7 +99,10 @@ extension NowPlayingMoviesVC : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "MovieDetailsStoryboard", bundle: nil)
         if let movieDetailsVc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsVC") as? MovieDetailsVC {
-            movieDetailsVc.viewModel.movieId = vm?.movies[indexPath.row].id
+            guard let movieData = vm?.movies[indexPath.row] else {return}
+            movieDetailsVc.viewModel.movieId = movieData.id
+            // for no connection case in the MovieDetails
+            movieDetailsVc.viewModel.MovieNoConnection = movieData
             movieDetailsVc.modalTransitionStyle = .crossDissolve
             movieDetailsVc.modalPresentationStyle = .fullScreen
             self.present(movieDetailsVc, animated: true)
