@@ -8,34 +8,27 @@
 import Foundation
 
 class URLManager: URLManagerProtocol {
-  
-        func getPath(for endpoint: EndPoint) -> String {
-            switch endpoint {
-            case .popular:
-                return "/popular"
-            case .upComing:
-                return "/upcoming"
-            case .nowPlaying:
-                return "/now_playing"
-            case .details(let movie_id):
-                return "/\(movie_id)"
-            case .base:
-                return ""
-            }
-    }
-    func getUrl(for endPoint: EndPoint)-> String{
-        let path = getPath(for: endPoint)
-        let baseUrl = "https://api.themoviedb.org/3/movie"
         
-        return "\(baseUrl)\(path)"
+    enum endpoints : String{
+        case upcomming = "upcoming"
+        case nowplaying = "now_playing"
+        case popular = "popular"
     }
-}
-enum EndPoint: Any {
-    case popular
-    case upComing
-    case nowPlaying
-    case details(movie_id: Int)
-    case base
-
-  
+    
+    func getFullURL(details: String , movieID : Int = 0) -> String? {
+         let base = "https://api.themoviedb.org/3/movie/"
+        switch details {
+        case endpoints.upcomming.rawValue:
+            return base + endpoints.upcomming.rawValue
+        case endpoints.popular.rawValue:
+            return base + endpoints.popular.rawValue
+        case endpoints.nowplaying.rawValue:
+            return base + endpoints.nowplaying.rawValue
+        case "movie":
+            return base + String(movieID)
+        default:
+            return base + endpoints.upcomming.rawValue
+        }
+        
+    }
 }

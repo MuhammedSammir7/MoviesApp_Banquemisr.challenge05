@@ -9,25 +9,36 @@ import UIKit
 import Combine
 import Network
 
-class NowPlayingMoviesVC: UIViewController {
+class MovieListVC: UIViewController {
 
     @IBOutlet weak var nowPlayingTableView: UITableView!
 
-    var vm : NowPlayingViewModel?
+    var vm : MovieListViewModel?
     var indicator: UIActivityIndicatorView?
     let monitor = NWPathMonitor()
     var isConnected: Bool = false
-    
     private var cancellables = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.tabBarController?.tabBar.items?[0].title = "NowPlaying"
+        self.tabBarController?.tabBar.items?[1].title = "UpComing"
+        self.tabBarController?.tabBar.items?[2].title = "Popular"
         setupIndecator()
         nowPlayingTableView.delegate = self
         nowPlayingTableView.dataSource = self
         
+        // handle tab bar item images
+        
+        switch self.tabBarController?.tabBar.selectedItem?.title {
+        case "NowPlaying":
+            vm = MovieListViewModel(entityName: "NowPlayingMovies", endPoint: "now_playing")
+        case "UpComing":
+            vm = MovieListViewModel(entityName: "Popular", endPoint: "popular")
+        default:
+            vm = MovieListViewModel(entityName: "UpComigMovies", endPoint: "upcoming")
+        }
+       
         monitor.pathUpdateHandler = { path in
                 self.isConnected = (path.status == .satisfied)
                     DispatchQueue.main.async {
@@ -43,9 +54,7 @@ class NowPlayingMoviesVC: UIViewController {
                 
                 let queue = DispatchQueue(label: "NetworkMonitor")
                 monitor.start(queue: queue)
-        
-    
-        vm = NowPlayingViewModel()
+
         
         nowPlayingTableView.register(UINib(nibName: "MoviesCell", bundle: nil), forCellReuseIdentifier: "MoviesCell")
         
@@ -78,7 +87,7 @@ class NowPlayingMoviesVC: UIViewController {
     }
         
 }
-extension NowPlayingMoviesVC : UITableViewDataSource,UITableViewDelegate{
+extension MovieListVC : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         vm?.movies.count ?? 1
     }
@@ -102,7 +111,6 @@ extension NowPlayingMoviesVC : UITableViewDataSource,UITableViewDelegate{
             guard let movieData = vm?.movies[indexPath.row] else {return}
             movieDetailsVc.viewModel.movieId = movieData.id
             // for no connection case in the MovieDetails
-            movieDetailsVc.viewModel.MovieNoConnection = movieData
             movieDetailsVc.modalTransitionStyle = .crossDissolve
             movieDetailsVc.modalPresentationStyle = .fullScreen
             self.present(movieDetailsVc, animated: true)
