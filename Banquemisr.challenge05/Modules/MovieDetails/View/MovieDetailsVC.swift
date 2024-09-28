@@ -49,7 +49,6 @@ class MovieDetailsVC: UIViewController {
                 monitor.start(queue: queue)
         
         
-        
     }
     func fetchDataFromAPI(){
         viewModel.fetchMovieDetails()

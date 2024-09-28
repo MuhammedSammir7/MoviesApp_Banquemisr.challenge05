@@ -1,30 +1,33 @@
 //
-//  UpComingMoviesViewModel.swift
+//  NowPlayingViewModel.swift
 //  Banquemisr.challenge05
 //
-//  Created by ios on 28/09/2024.
+//  Created by ios on 27/09/2024.
 //
 
 import Foundation
 import Combine
 import UIKit
 
-class UpComingMoviesViewModel: MovieViewModelProtocol {
+class MovieListViewModel: MovieViewModelProtocol {
     private var cancellables = Set<AnyCancellable>()
     private var networkManager: NetworkManagerProtocol?
     var urlManager: URLManagerProtocol?
-    let entityName = "UpComigMovies"
-
+    var entityName : String?
+    var endPoint : String?
+    
     
     @Published var movies: [Movie] = []
     
-    init() {
+    init(entityName: String, endPoint : String) {
         self.networkManager = NetworkManager()
         self.urlManager = URLManager()
+        self.entityName = entityName
+        self.endPoint = endPoint
     }
     
-    func fetchUpComingMovies() {
-        networkManager?.fetch(url: urlManager?.getUrl(for: .upComing) ?? "", type: MoviesResponse.self)
+    func fetchNowPlayingMovies() {
+        networkManager?.fetch(url: urlManager?.getFullURL(details: endPoint ?? "", movieID: 0) ?? "", type: MoviesResponse.self)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -40,10 +43,11 @@ class UpComingMoviesViewModel: MovieViewModelProtocol {
                 }
                 guard let self = self else{return}
                 self.movies = result
-                PersistenceManager.shared.deleteAllNews(entityName: self.entityName)
+                PersistenceManager.shared.deleteAllNews(entityName: self.entityName ?? "")
                 for movie in result {
-                    PersistenceManager.shared.storeMovies(movie, entityName: self.entityName)
+                    PersistenceManager.shared.storeMovies(movie, entityName: self.entityName ?? "")
                 }
+                
             })
             .store(in: &cancellables)
     }
@@ -59,12 +63,13 @@ class UpComingMoviesViewModel: MovieViewModelProtocol {
                 .map { data, _ in
                     UIImage(data: data)
                 }
-                .catch { _ in Just(nil) }
+                .catch { _ in Just(nil) }  // In case of an error, return nil
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
         }
+    
     func loadDatafromCoreData() {
-        let storedMovies = PersistenceManager.shared.getMovies(entityName: entityName)
+        let storedMovies = PersistenceManager.shared.getMovies(entityName: entityName ?? "")
             for movie in storedMovies {
                 var moviee = Movie(backdropPath: "", id: 0, originalLanguage: "", overview: "", posterPath: "", releaseDate: "", title: "", voteAverage: 0, voteCount: 0)
                 moviee.backdropPath = movie.value(forKey: "backdropPath") as? String
@@ -79,4 +84,6 @@ class UpComingMoviesViewModel: MovieViewModelProtocol {
                 self.movies.append(moviee)
             }
         }
+     
 }
+

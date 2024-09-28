@@ -23,7 +23,7 @@ class MovieDetailsViewModel{
         self.urlManager = URLManager()
     }
     func fetchMovieDetails(){
-        networkManager?.fetch(url: urlManager?.getUrl(for: .details(movie_id: movieId ?? 0)) ?? "", type: MovieDetailsResponse.self).sink(receiveCompletion: { completion in
+        networkManager?.fetch(url: urlManager?.getFullURL(details: "movie", movieID: movieId ?? 0) ?? "", type: MovieDetailsResponse.self).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 print("Successfully fetched movies.")

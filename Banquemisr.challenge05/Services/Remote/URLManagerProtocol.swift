@@ -8,6 +8,5 @@
 import Foundation
 
 protocol URLManagerProtocol {
-    func getPath(for endpoint: EndPoint) -> String
-    func getUrl(for endPoint: EndPoint)-> String
+    func getFullURL(details: String , movieID : Int) -> String?
 }

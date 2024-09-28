@@ -28,7 +28,7 @@ class MoviesCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with movie: Movie, viewModel: MovieViewModelProtocol) {
+    func configure(with movie: Movie, viewModel: MovieListViewModel) {
             movieNameLbl.text = movie.title
             movieLanguageLbl.text = movie.originalLanguage
             movieDateLbl.text = movie.releaseDate
