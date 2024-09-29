@@ -11,6 +11,8 @@ import Network
 
 class MovieListVC: UIViewController {
 
+    @IBOutlet weak var loadingImg: UIImageView!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var nowPlayingTableView: UITableView!
 
     var vm : MovieListViewModel?
@@ -21,24 +23,28 @@ class MovieListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingImg.isHidden = false
+        nowPlayingTableView.isHidden = true
         self.tabBarController?.tabBar.items?[0].title = "NowPlaying"
         self.tabBarController?.tabBar.items?[1].title = "UpComing"
         self.tabBarController?.tabBar.items?[2].title = "Popular"
-        setupIndecator()
         nowPlayingTableView.delegate = self
         nowPlayingTableView.dataSource = self
-        
+        setupIndecator()
         // handle tab bar item images
         
         switch self.tabBarController?.tabBar.selectedItem?.title {
-        case "NowPlaying":
-            vm = MovieListViewModel(entityName: "NowPlayingMovies", endPoint: "now_playing")
         case "UpComing":
+            titleLbl.text = "UpComing"
+            vm = MovieListViewModel(entityName: "UpComigMovies", endPoint: "upcoming")
+        case "Popular":
+            titleLbl.text = "Popular"
             vm = MovieListViewModel(entityName: "Popular", endPoint: "popular")
         default:
-            vm = MovieListViewModel(entityName: "UpComigMovies", endPoint: "upcoming")
+            titleLbl.text = "NowPlaying"
+            vm = MovieListViewModel(entityName: "NowPlayingMovies", endPoint: "now_playing")
         }
-       
+          
         monitor.pathUpdateHandler = { path in
                 self.isConnected = (path.status == .satisfied)
                     DispatchQueue.main.async {
@@ -60,11 +66,15 @@ class MovieListVC: UIViewController {
         
     }
     func fetchDataFromAPI(){
-        vm?.fetchNowPlayingMovies()
+        vm?.fetchMovies()
         vm?.$movies.sink { [weak self] _ in
                     DispatchQueue.main.async {
                         self?.nowPlayingTableView.reloadData()
-                        self?.indicator?.stopAnimating()
+                        if self?.vm?.movies.count != 0 {
+                            self?.indicator?.stopAnimating()
+                            self?.loadingImg.isHidden = true
+                            self?.nowPlayingTableView.isHidden = false
+                        }
                     }
                 }.store(in: &cancellables)
     }
@@ -73,7 +83,11 @@ class MovieListVC: UIViewController {
         vm?.$movies.sink { [weak self] _ in
             DispatchQueue.main.async {
                 self?.nowPlayingTableView.reloadData()
-                self?.indicator?.stopAnimating()
+                if self?.vm?.movies.count != 0 {
+                    self?.indicator?.stopAnimating()
+                    self?.loadingImg.isHidden = true
+                    self?.nowPlayingTableView.isHidden = false
+                }
             }
         }.store(in: &cancellables)
     }
@@ -89,14 +103,14 @@ class MovieListVC: UIViewController {
 }
 extension MovieListVC : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        vm?.movies.count ?? 1
+        vm?.movies.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = nowPlayingTableView.dequeueReusableCell(withIdentifier: "MoviesCell") as? MoviesCell {
             
             if let movieData = vm?.movies[indexPath.row] {
-                cell.configure(with: movieData, viewModel: vm!)
+                cell.configure(with: movieData)
             }
             
             return cell
