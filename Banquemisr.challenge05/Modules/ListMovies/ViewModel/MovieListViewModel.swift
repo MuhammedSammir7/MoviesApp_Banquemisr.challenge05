@@ -10,8 +10,8 @@ import Combine
 import UIKit
 
 class MovieListViewModel {
-    private var cancellables = Set<AnyCancellable>()
-    private var networkManager: NetworkManagerProtocol?
+    var cancellables = Set<AnyCancellable>()
+    var networkManager: NetworkManagerProtocol?
     var urlManager: URLManagerProtocol?
     var entityName : String?
     var endPoint : String?
@@ -51,7 +51,7 @@ class MovieListViewModel {
     
     func loadDatafromCoreData() {
         let storedMovies = PersistenceManager.shared.getMovies(entityName: entityName ?? "")
-        self.movies.removeAll() // Clear the existing movies array to avoid duplication
+        self.movies.removeAll() 
         for movie in storedMovies {
             var moviee = Movie(id: 0, backdropPath: "", originalLanguage: "", overview: "", releaseDate: "", title: "", voteAverage: 0, voteCount: 0)
 
