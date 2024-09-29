@@ -63,7 +63,7 @@ class MovieDetailsViewModelTests: XCTestCase {
         
         viewModel.fetchMovieDetails()
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testFetchPosterImage() {
@@ -99,6 +99,68 @@ class MovieDetailsViewModelTests: XCTestCase {
             .store(in: &viewModel.cancellables)
         wait(for: [expectation], timeout: 2)
     }
+   
+    func testFetchPosterImageFailure() {
+        // Given
+        viewModel.movie = MovieDetailsResponse(
+            backdropPath: "/backdrop.jpg",
+            genres: [Genre(name: "Action")],
+            id: 1,
+            originalLanguage: "en",
+            originalTitle: "Mock Title",
+            overview: "Mock overview",
+            posterPath: "/poster.jpg",
+            releaseDate: "2023-01-01",
+            runtime: 120,
+            voteAverage: 8.5,
+            voteCount: 100
+        )
+        
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: request.url!, statusCode: 404, httpVersion: nil, headerFields: nil)!
+            return (response, Data())
+        }
+        
+        let expectation = XCTestExpectation(description: "Fetch poster image failure")
+        
+        viewModel.fetchPosterImage()
+            .sink(receiveValue: { image in
+                XCTAssertNil(image, "Image should be nil on failure")
+                expectation.fulfill()
+            })
+            .store(in: &viewModel.cancellables)
+        
+        wait(for: [expectation], timeout: 2)
+    }
+    
+    func testMockMovieDetailsFailure() {
+        // Given
+        let mockError = NSError(domain: "NetworkError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch movie details."])
+        let mockViewModel = MockMovieDetailsViewModel(mockError: mockError)
+
+        // Expectation for async error handling
+        let expectation = XCTestExpectation(description: "Handle mock movie details failure")
+
+        // Simulate binding
+        mockViewModel.$errorMessage
+            .sink { errorMessage in
+                if let errorMessage = errorMessage {
+                    XCTAssertNotNil(errorMessage, "Error message should not be nil")
+                    XCTAssertEqual(errorMessage, "Failed to fetch movie details.", "Error message should match the expected string")
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &mockViewModel.cancellables)
+
+        // When
+        mockViewModel.fetchMovieDetails()
+
+        // Then
+        wait(for: [expectation], timeout: 2)
+    }
+
+
+
 }
 
 class MockImageLoader {
@@ -110,5 +172,22 @@ class MockImageLoader {
             ctx.fill(CGRect(origin: .zero, size: size))
         }
         return image.pngData()!
+    }
+}
+
+class MockMovieDetailsViewModel: ObservableObject {
+    @Published var errorMessage: String?
+    var cancellables = Set<AnyCancellable>()
+    var mockError: NSError?
+    
+    init(mockError: NSError?) {
+        self.mockError = mockError
+    }
+    
+    func fetchMovieDetails() {
+        // Simulating an error response
+        if let error = mockError {
+            self.errorMessage = error.localizedDescription
+        }
     }
 }

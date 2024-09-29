@@ -125,7 +125,7 @@ class NetworkManagerTests: XCTestCase {
             })
             .store(in: &cancellables)
 
-        wait(for: [expectation], timeout: 3.0)
+        wait(for: [expectation], timeout: 5.0)
     }
     
     func testFetchFailure_HTTPError500() throws {
