@@ -38,4 +38,14 @@ struct Movie: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+    init(id: Int, backdropPath: String, originalLanguage: String, overview: String, releaseDate: String, title: String, voteAverage: Double, voteCount: Int) {
+            self.id = id
+            self.backdropPath = backdropPath
+            self.originalLanguage = originalLanguage
+            self.overview = overview
+            self.releaseDate = releaseDate
+            self.title = title
+            self.voteAverage = voteAverage
+            self.voteCount = voteCount
+        }
 }
