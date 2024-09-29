@@ -67,8 +67,9 @@ class MovieListViewModel {
             self.movies.append(moviee)
         }
 
+        
     }
-
+    
      
 }
 

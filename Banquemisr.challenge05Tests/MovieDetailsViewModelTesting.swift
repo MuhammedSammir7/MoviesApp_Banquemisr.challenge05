@@ -99,6 +99,42 @@ class MovieDetailsViewModelTests: XCTestCase {
             .store(in: &viewModel.cancellables)
         wait(for: [expectation], timeout: 2)
     }
+   
+    func testFetchPosterImageFailure() {
+        // Given
+        viewModel.movie = MovieDetailsResponse(
+            backdropPath: "/backdrop.jpg",
+            genres: [Genre(name: "Action")],
+            id: 1,
+            originalLanguage: "en",
+            originalTitle: "Mock Title",
+            overview: "Mock overview",
+            posterPath: "/poster.jpg",
+            releaseDate: "2023-01-01",
+            runtime: 120,
+            voteAverage: 8.5,
+            voteCount: 100
+        )
+        
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: request.url!, statusCode: 404, httpVersion: nil, headerFields: nil)!
+            return (response, Data())
+        }
+        
+        let expectation = XCTestExpectation(description: "Fetch poster image failure")
+        
+        viewModel.fetchPosterImage()
+            .sink(receiveValue: { image in
+                XCTAssertNil(image, "Image should be nil on failure")
+                expectation.fulfill()
+            })
+            .store(in: &viewModel.cancellables)
+        
+        wait(for: [expectation], timeout: 2)
+    }
+    
+    
+
 }
 
 class MockImageLoader {

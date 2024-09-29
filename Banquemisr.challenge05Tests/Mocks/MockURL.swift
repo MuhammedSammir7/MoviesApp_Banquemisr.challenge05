@@ -18,6 +18,7 @@ class MockURLManager: URLManagerProtocol {
         }
     }
 
+    
     func getFullURL(details: String, movieID: Int) -> String {
         return mockURL
     }
