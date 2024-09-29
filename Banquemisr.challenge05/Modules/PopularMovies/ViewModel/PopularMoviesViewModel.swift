@@ -1,19 +1,20 @@
 //
-//  NowPlayingViewModel.swift
+//  PopularMoviesViewModel.swift
 //  Banquemisr.challenge05
 //
-//  Created by ios on 27/09/2024.
+//  Created by ios on 28/09/2024.
 //
 
 import Foundation
 import Combine
 import UIKit
 
-class NowPlayingViewModel {
+class PopularMoviesViewModel: MovieViewModelProtocol{
     private var cancellables = Set<AnyCancellable>()
     private var networkManager: NetworkManagerProtocol?
     var urlManager: URLManagerProtocol?
-    
+    let entityName = "Popular"
+
     @Published var movies: [Movie] = []
     
     init() {
@@ -21,8 +22,8 @@ class NowPlayingViewModel {
         self.urlManager = URLManager()
     }
     
-    func fetchNowPlayingMovies() {
-        networkManager?.fetch(url: urlManager?.getUrl(for: .nowPlaying) ?? "", type: MoviesResponse.self)
+    func fetchPopularMovies() {
+        networkManager?.fetch(url: urlManager?.getUrl(for: .popular) ?? "", type: MoviesResponse.self)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -37,6 +38,12 @@ class NowPlayingViewModel {
                     
                 }
                 self?.movies = result
+                guard let self = self else{return}
+                self.movies = result
+                PersistenceManager.shared.deleteAllNews(entityName: self.entityName)
+                for movie in result {
+                    PersistenceManager.shared.storeMovies(movie, entityName: self.entityName)
+                }
             })
             .store(in: &cancellables)
     }
@@ -56,4 +63,22 @@ class NowPlayingViewModel {
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
         }
+
+    func loadDatafromCoreData() {
+        let storedMovies = PersistenceManager.shared.getMovies(entityName: entityName)
+            for movie in storedMovies {
+                var moviee = Movie(backdropPath: "", id: 0, originalLanguage: "", overview: "", posterPath: "", releaseDate: "", title: "", voteAverage: 0, voteCount: 0)
+                moviee.backdropPath = movie.value(forKey: "backdropPath") as? String
+                moviee.originalLanguage = movie.value(forKey: "originalLanguage") as? String
+                moviee.id = movie.value(forKey: "id") as? Int
+                moviee.posterPath = movie.value(forKey: "posterPath") as? String
+                moviee.title = movie.value(forKey: "title") as? String
+                moviee.releaseDate = movie.value(forKey: "releaseDate") as? String
+                moviee.voteAverage = movie.value(forKey: "voteAverage") as? Double
+                moviee.voteCount = movie.value(forKey: "voteCount") as? Int
+                moviee.overview = movie.value(forKey: "overview") as? String
+                self.movies.append(moviee)
+            }
+        }
+
 }

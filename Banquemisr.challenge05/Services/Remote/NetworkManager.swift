@@ -43,9 +43,10 @@ class NetworkManager: NetworkManagerProtocol {
         
         var request = URLRequest(url: componentsURL)
         request.httpMethod = "GET"
-        request.timeoutInterval = 10
+        request.timeoutInterval = 5
         request.allHTTPHeaderFields = ["accept": "application/json"]
-        
+        request.cachePolicy = .reloadIgnoringLocalCacheData
+
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { result -> Data in
                 guard let response = result.response as? HTTPURLResponse,

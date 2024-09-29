@@ -7,9 +7,10 @@
 
 import UIKit
 import Combine
-
+import Network
 class MovieDetailsVC: UIViewController {
 
+    @IBOutlet weak var durationLbl: UILabel!
     @IBOutlet weak var voteCountLbl: UILabel!
     @IBOutlet weak var movieRatingLbl: UILabel!
     @IBOutlet weak var overViewTxt: UITextView!
@@ -25,12 +26,41 @@ class MovieDetailsVC: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private var cancellable: AnyCancellable?
     private var cancellabl: AnyCancellable?
-
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupIndecator()
+        monitor.pathUpdateHandler = { path in
+                self.isConnected = (path.status == .satisfied)
+                    DispatchQueue.main.async {
+                        if self.isConnected {
+                            //  is online
+                            self.fetchDataFromAPI()
+                        } else {
+                            //  is offline
+                            self.fetchDataFromCoreData()
+                        }
+                    }
+                }
+                
+                let queue = DispatchQueue(label: "NetworkMonitor")
+                monitor.start(queue: queue)
+        
+        
+    }
+    func fetchDataFromAPI(){
         viewModel.fetchMovieDetails()
+        setUpViewComponents()
+        
+    }
+    func fetchDataFromCoreData(){
+        viewModel.loadDatafromCoreData()
+        setUpViewComponents()
+        
+    }
+    func setUpViewComponents(){
         viewModel.$movie.sink { [weak self] _ in
                     DispatchQueue.main.async {
                         guard let self = self else{return}
@@ -44,10 +74,13 @@ class MovieDetailsVC: UIViewController {
                         self.overViewTxt.text = movieData.overview
                         self.voteCountLbl.text = "\(movieData.voteCount ?? 0)"
                         self.movieLanguageLbl.text = movieData.originalLanguage
+                        let hours = (movieData.runtime ?? 0) / 60
+                        let minutes = (movieData.runtime ?? 0) % 60
+                        self.durationLbl.text = "\(hours)h \(minutes)m"
                         if movieData.genres?.count ?? 0 > 1{
                             self.genreLbl.text = "\(movieData.genres?[0].name ?? ""),\(movieData.genres?[1].name ?? "")"}
                         else{
-                            
+
                                 self.genreLbl.text = "\(movieData.genres?[0].name ?? "")"
                         }
                         self.cancellabl = self.viewModel.fetchPosterImage()
@@ -75,14 +108,6 @@ class MovieDetailsVC: UIViewController {
         indicator.startAnimating()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

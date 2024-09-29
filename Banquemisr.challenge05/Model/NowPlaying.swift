@@ -17,35 +17,35 @@ struct Dates: Codable {
 }
 
 struct Movie: Codable {
-    let adult: Bool?
-    let backdropPath: String?
-    let genreIDs: [Int]?
-    let id: Int?
-    let originalLanguage: String?
-    let originalTitle: String?
-    let overview: String?
-    let popularity: Double?
-    let posterPath: String?
-    let releaseDate: String?
-    let title: String?
-    let video: Bool?
-    let voteAverage: Double?
-    let voteCount: Int?
+    var backdropPath: String?
+    var id: Int?
+    var originalLanguage: String?
+    var overview: String?
+    var posterPath: String?
+    var releaseDate: String?
+    var title: String?
+    var voteAverage: Double?
+    var voteCount: Int?
     
     enum CodingKeys: String, CodingKey {
-        case adult
         case backdropPath = "backdrop_path"
-        case genreIDs = "genre_ids"
         case id
         case originalLanguage = "original_language"
-        case originalTitle = "original_title"
         case overview
-        case popularity
         case posterPath = "poster_path"
         case releaseDate = "release_date"
         case title
-        case video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+    init(id: Int, backdropPath: String, originalLanguage: String, overview: String, releaseDate: String, title: String, voteAverage: Double, voteCount: Int) {
+            self.id = id
+            self.backdropPath = backdropPath
+            self.originalLanguage = originalLanguage
+            self.overview = overview
+            self.releaseDate = releaseDate
+            self.title = title
+            self.voteAverage = voteAverage
+            self.voteCount = voteCount
+        }
 }
