@@ -73,6 +73,7 @@ class MovieDetailsViewModel{
                         movie.posterPath = movieData.value(forKey: "posterPath") as? String
                         movie.releaseDate = movieData.value(forKey: "releaseDate") as? String
                         movie.originalTitle = movieData.value(forKey: "originalTitle") as? String
+                        movie.title = movieData.value(forKey: "title") as? String
                         movie.voteCount = movieData.value(forKey: "voteCount") as? Int
                         movie.voteAverage = movieData.value(forKey: "voteAverage") as? Double
                         movie.runtime = movieData.value(forKey: "runtime") as? Int
@@ -83,7 +84,6 @@ class MovieDetailsViewModel{
                         }
 
                         self.movie = movie
-                        print("Loaded movie from Core Data: \(movie)")
                         break
                     }
                 }

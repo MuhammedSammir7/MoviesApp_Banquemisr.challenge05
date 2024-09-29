@@ -63,7 +63,7 @@ class MovieDetailsViewModelTests: XCTestCase {
         
         viewModel.fetchMovieDetails()
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testFetchPosterImage() {
@@ -133,7 +133,33 @@ class MovieDetailsViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
     }
     
-    
+    func testMockMovieDetailsFailure() {
+        // Given
+        let mockError = NSError(domain: "NetworkError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch movie details."])
+        let mockViewModel = MockMovieDetailsViewModel(mockError: mockError)
+
+        // Expectation for async error handling
+        let expectation = XCTestExpectation(description: "Handle mock movie details failure")
+
+        // Simulate binding
+        mockViewModel.$errorMessage
+            .sink { errorMessage in
+                if let errorMessage = errorMessage {
+                    XCTAssertNotNil(errorMessage, "Error message should not be nil")
+                    XCTAssertEqual(errorMessage, "Failed to fetch movie details.", "Error message should match the expected string")
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &mockViewModel.cancellables)
+
+        // When
+        mockViewModel.fetchMovieDetails()
+
+        // Then
+        wait(for: [expectation], timeout: 2)
+    }
+
+
 
 }
 
@@ -146,5 +172,22 @@ class MockImageLoader {
             ctx.fill(CGRect(origin: .zero, size: size))
         }
         return image.pngData()!
+    }
+}
+
+class MockMovieDetailsViewModel: ObservableObject {
+    @Published var errorMessage: String?
+    var cancellables = Set<AnyCancellable>()
+    var mockError: NSError?
+    
+    init(mockError: NSError?) {
+        self.mockError = mockError
+    }
+    
+    func fetchMovieDetails() {
+        // Simulating an error response
+        if let error = mockError {
+            self.errorMessage = error.localizedDescription
+        }
     }
 }

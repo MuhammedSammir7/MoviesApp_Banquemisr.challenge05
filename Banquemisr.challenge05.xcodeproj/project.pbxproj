@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		811D299C2CA9BE7400B69F93 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D299B2CA9BE7400B69F93 /* CustomColor.swift */; };
 		8143B0352CA98C0600D7443A /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143B0342CA98C0600D7443A /* MockNetworkManager.swift */; };
 		8143B0392CA992A900D7443A /* MovieListViewModelTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143B0382CA992A900D7443A /* MovieListViewModelTesting.swift */; };
 		81822E2D2CA5F08F0089F97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E2C2CA5F08F0089F97D /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		811D299B2CA9BE7400B69F93 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		8143B0342CA98C0600D7443A /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		8143B0382CA992A900D7443A /* MovieListViewModelTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModelTesting.swift; sourceTree = "<group>"; };
 		8169F51B2CA9ACBB00936341 /* Banquemisr.challenge05.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Banquemisr.challenge05.xctestplan; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				81AE13782CA8DE3300885CE3 /* FetchingImages.swift */,
+				811D299B2CA9BE7400B69F93 /* CustomColor.swift */,
 			);
 			path = Utilite;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			files = (
 				81822E822CA653720089F97D /* NetworkManager.swift in Sources */,
 				81822E802CA6515D0089F97D /* URLManagerProtocol.swift in Sources */,
+				811D299C2CA9BE7400B69F93 /* CustomColor.swift in Sources */,
 				81A16CB52CA717360036045D /* MovieDetails.swift in Sources */,
 				81822E862CA671F20089F97D /* MovieListViewModel.swift in Sources */,
 				81822E672CA612500089F97D /* MoviesCell.swift in Sources */,
