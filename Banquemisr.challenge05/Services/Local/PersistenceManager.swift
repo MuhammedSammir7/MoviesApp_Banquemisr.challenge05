@@ -66,7 +66,6 @@ class PersistenceManager {
             self.cancellables.insert(cancellable)
         }
         
-        // Wait until all images are fetched
         dispatchGroup.notify(queue: .main) { [weak self] in
             do {
                 try self?.managedContext.save()

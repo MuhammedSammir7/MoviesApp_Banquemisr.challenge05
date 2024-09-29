@@ -33,7 +33,12 @@ class MoviesCell: UITableViewCell {
     func configure(with movie: Movie) {
             movieNameLbl.text = movie.title
             movieLanguageLbl.text = movie.originalLanguage
-            movieDateLbl.text = movie.releaseDate
+        if let releaseDate = movie.releaseDate {
+                let formattedDate = formatDateToYear(releaseDate)
+                movieDateLbl.text = formattedDate
+            } else {
+                movieDateLbl.text = "Unknown"
+            }
             
         monitor.pathUpdateHandler = { path in
                 self.isConnected = (path.status == .satisfied)
@@ -64,8 +69,18 @@ class MoviesCell: UITableViewCell {
                 
                 let queue = DispatchQueue(label: "NetworkMonitor")
                 monitor.start(queue: queue)
-            // Fetch and assign the image
+            
             
         }
-    
+    private func formatDateToYear(_ dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "yyyy"
+            return dateFormatter.string(from: date)
+        }
+
+        return dateString
+    }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		811D299C2CA9BE7400B69F93 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D299B2CA9BE7400B69F93 /* CustomColor.swift */; };
+		8143B0352CA98C0600D7443A /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143B0342CA98C0600D7443A /* MockNetworkManager.swift */; };
+		8143B0392CA992A900D7443A /* MovieListViewModelTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143B0382CA992A900D7443A /* MovieListViewModelTesting.swift */; };
 		81822E2D2CA5F08F0089F97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E2C2CA5F08F0089F97D /* AppDelegate.swift */; };
 		81822E2F2CA5F08F0089F97D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81822E2E2CA5F08F0089F97D /* SceneDelegate.swift */; };
 		81822E342CA5F08F0089F97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81822E322CA5F08F0089F97D /* Main.storyboard */; };
@@ -35,7 +38,7 @@
 		81AE137B2CA927D800885CE3 /* URLManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE137A2CA927D800885CE3 /* URLManagerTests.swift */; };
 		81AE137D2CA92C6B00885CE3 /* NetworkManagerTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE137C2CA92C6B00885CE3 /* NetworkManagerTesting.swift */; };
 		81AE13802CA92D3B00885CE3 /* MockURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE137F2CA92D3B00885CE3 /* MockURL.swift */; };
-		81AE13822CA92F6F00885CE3 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE13812CA92F6F00885CE3 /* PersistenceManager.swift */; };
+		81AE13822CA92F6F00885CE3 /* PersistenceManagerTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE13812CA92F6F00885CE3 /* PersistenceManagerTesting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		811D299B2CA9BE7400B69F93 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		8143B0342CA98C0600D7443A /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		8143B0382CA992A900D7443A /* MovieListViewModelTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModelTesting.swift; sourceTree = "<group>"; };
+		8169F51B2CA9ACBB00936341 /* Banquemisr.challenge05.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Banquemisr.challenge05.xctestplan; sourceTree = "<group>"; };
 		81822E292CA5F08F0089F97D /* Banquemisr.challenge05.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Banquemisr.challenge05.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81822E2C2CA5F08F0089F97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81822E2E2CA5F08F0089F97D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +95,7 @@
 		81AE137A2CA927D800885CE3 /* URLManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManagerTests.swift; sourceTree = "<group>"; };
 		81AE137C2CA92C6B00885CE3 /* NetworkManagerTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTesting.swift; sourceTree = "<group>"; };
 		81AE137F2CA92D3B00885CE3 /* MockURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURL.swift; sourceTree = "<group>"; };
-		81AE13812CA92F6F00885CE3 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		81AE13812CA92F6F00885CE3 /* PersistenceManagerTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTesting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +126,7 @@
 		81822E202CA5F08F0089F97D = {
 			isa = PBXGroup;
 			children = (
+				8169F51B2CA9ACBB00936341 /* Banquemisr.challenge05.xctestplan */,
 				81822E2B2CA5F08F0089F97D /* Banquemisr.challenge05 */,
 				81822E452CA5F0930089F97D /* Banquemisr.challenge05Tests */,
 				81822E4F2CA5F0930089F97D /* Banquemisr.challenge05UITests */,
@@ -159,8 +167,9 @@
 				81822E462CA5F0930089F97D /* Banquemisr_challenge05Tests.swift */,
 				81AE137A2CA927D800885CE3 /* URLManagerTests.swift */,
 				81AE137C2CA92C6B00885CE3 /* NetworkManagerTesting.swift */,
-				81AE13812CA92F6F00885CE3 /* PersistenceManager.swift */,
+				81AE13812CA92F6F00885CE3 /* PersistenceManagerTesting.swift */,
 				81940DB52CA942200032FC73 /* MovieDetailsViewModelTesting.swift */,
+				8143B0382CA992A900D7443A /* MovieListViewModelTesting.swift */,
 			);
 			path = Banquemisr.challenge05Tests;
 			sourceTree = "<group>";
@@ -287,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				81AE13782CA8DE3300885CE3 /* FetchingImages.swift */,
+				811D299B2CA9BE7400B69F93 /* CustomColor.swift */,
 			);
 			path = Utilite;
 			sourceTree = "<group>";
@@ -295,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				81AE137F2CA92D3B00885CE3 /* MockURL.swift */,
+				8143B0342CA98C0600D7443A /* MockNetworkManager.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -434,6 +445,7 @@
 			files = (
 				81822E822CA653720089F97D /* NetworkManager.swift in Sources */,
 				81822E802CA6515D0089F97D /* URLManagerProtocol.swift in Sources */,
+				811D299C2CA9BE7400B69F93 /* CustomColor.swift in Sources */,
 				81A16CB52CA717360036045D /* MovieDetails.swift in Sources */,
 				81822E862CA671F20089F97D /* MovieListViewModel.swift in Sources */,
 				81822E672CA612500089F97D /* MoviesCell.swift in Sources */,
@@ -456,11 +468,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				81822E472CA5F0930089F97D /* Banquemisr_challenge05Tests.swift in Sources */,
-				81AE13822CA92F6F00885CE3 /* PersistenceManager.swift in Sources */,
+				81AE13822CA92F6F00885CE3 /* PersistenceManagerTesting.swift in Sources */,
 				81AE13802CA92D3B00885CE3 /* MockURL.swift in Sources */,
 				81940DB62CA942210032FC73 /* MovieDetailsViewModelTesting.swift in Sources */,
+				8143B0352CA98C0600D7443A /* MockNetworkManager.swift in Sources */,
 				81AE137B2CA927D800885CE3 /* URLManagerTests.swift in Sources */,
 				81AE137D2CA92C6B00885CE3 /* NetworkManagerTesting.swift in Sources */,
+				8143B0392CA992A900D7443A /* MovieListViewModelTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

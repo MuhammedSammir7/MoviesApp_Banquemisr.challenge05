@@ -25,26 +25,11 @@ class MovieListVC: UIViewController {
         super.viewDidLoad()
         loadingImg.isHidden = false
         nowPlayingTableView.isHidden = true
-        self.tabBarController?.tabBar.items?[0].title = "NowPlaying"
-        self.tabBarController?.tabBar.items?[1].title = "UpComing"
-        self.tabBarController?.tabBar.items?[2].title = "Popular"
+        setupTabBar()
         nowPlayingTableView.delegate = self
         nowPlayingTableView.dataSource = self
         setupIndecator()
-        // handle tab bar item images
         
-        switch self.tabBarController?.tabBar.selectedItem?.title {
-        case "UpComing":
-            titleLbl.text = "UpComing"
-            vm = MovieListViewModel(entityName: "UpComigMovies", endPoint: "upcoming")
-        case "Popular":
-            titleLbl.text = "Popular"
-            vm = MovieListViewModel(entityName: "Popular", endPoint: "popular")
-        default:
-            titleLbl.text = "NowPlaying"
-            vm = MovieListViewModel(entityName: "NowPlayingMovies", endPoint: "now_playing")
-        }
-          
         monitor.pathUpdateHandler = { path in
                 self.isConnected = (path.status == .satisfied)
                     DispatchQueue.main.async {
@@ -91,6 +76,43 @@ class MovieListVC: UIViewController {
             }
         }.store(in: &cancellables)
     }
+    func setupTabBar(){
+        if let items = self.tabBarController?.tabBar.items {
+            items[0].title = "NowPlaying"
+            items[0].image = UIImage(named: "now")?.withRenderingMode(.alwaysOriginal)
+            items[0].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+
+            items[1].title = "UpComing"
+            items[1].image = UIImage(named: "upcoming")?.withRenderingMode(.alwaysOriginal)
+            items[1].imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
+
+            items[2].title = "Popular"
+            items[2].image = UIImage(named: "popular")?.withRenderingMode(.alwaysOriginal)
+            items[2].imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
+        }
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        if let tabBarColor = UIColor(hex: "#313B46") {
+            appearance.backgroundColor = tabBarColor
+        }
+        self.tabBarController?.tabBar.tintColor = UIColor.white
+        self.tabBarController?.tabBar.standardAppearance = appearance
+        self.tabBarController?.tabBar.scrollEdgeAppearance = appearance
+
+
+        switch self.tabBarController?.tabBar.selectedItem?.title {
+        case "UpComing":
+            titleLbl.text = "UpComing"
+            vm = MovieListViewModel(entityName: "UpComigMovies", endPoint: "upcoming")
+        case "Popular":
+            titleLbl.text = "Popular"
+            vm = MovieListViewModel(entityName: "Popular", endPoint: "popular")
+        default:
+            titleLbl.text = "NowPlaying"
+            vm = MovieListViewModel(entityName: "NowPlayingMovies", endPoint: "now_playing")
+        }
+    }
     func setupIndecator(){
         indicator = UIActivityIndicatorView(style: .large)
         guard let indicator = indicator else{return}
@@ -124,7 +146,6 @@ extension MovieListVC : UITableViewDataSource,UITableViewDelegate{
         if let movieDetailsVc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsVC") as? MovieDetailsVC {
             guard let movieData = vm?.movies[indexPath.row] else {return}
             movieDetailsVc.viewModel.movieId = movieData.id
-            // for no connection case in the MovieDetails
             movieDetailsVc.modalTransitionStyle = .crossDissolve
             movieDetailsVc.modalPresentationStyle = .fullScreen
             self.present(movieDetailsVc, animated: true)

@@ -21,7 +21,7 @@ class FetchingImages {
                 .map { data, _ in
                     data
                 }
-                .catch { _ in Just(nil) }  // In case of an error, return nil
+                .catch { _ in Just(nil) }  
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
         }
