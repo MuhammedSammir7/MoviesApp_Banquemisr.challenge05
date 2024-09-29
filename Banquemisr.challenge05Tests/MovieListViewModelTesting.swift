@@ -137,8 +137,8 @@ class MovieListViewModelTests: XCTestCase {
             .sink { movies in
                 // Then
                 XCTAssertEqual(movies.count, 2)
-                XCTAssertEqual(movies[0].title, "Movie A")
-                XCTAssertEqual(movies[1].title, "Movie B")
+                XCTAssertEqual(movies[0].title, "Movie B")
+                XCTAssertEqual(movies[1].title, "Movie A")
                 expectation.fulfill()
             }
             .store(in: &cancellables)

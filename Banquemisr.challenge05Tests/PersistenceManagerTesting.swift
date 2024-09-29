@@ -64,8 +64,6 @@ class PersistenceManagerTests: XCTestCase {
         XCTAssertEqual(storedMovies.count, 0, "No movies should be fetched from an empty database.")
     }
 
-
-   
     // Test fetching specific movies
     func testStoreSpecificMovie() {
         let movieDetails = MovieDetailsResponse(
