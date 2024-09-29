@@ -51,9 +51,9 @@ class MovieListViewModel {
     
     func loadDatafromCoreData() {
         let storedMovies = PersistenceManager.shared.getMovies(entityName: entityName ?? "")
-        self.movies.removeAll() 
+        self.movies.removeAll() // Clear the existing movies array to avoid duplication
         for movie in storedMovies {
-            var moviee = Movie(backdropPath: "", id: 0, originalLanguage: "", overview: "", posterPath: "", releaseDate: "", title: "", voteAverage: 0, voteCount: 0)
+            var moviee = Movie(id: 0, backdropPath: "", originalLanguage: "", overview: "", releaseDate: "", title: "", voteAverage: 0, voteCount: 0)
 
             moviee.backdropPath = movie.value(forKey: "backdropPath") as? String
             moviee.originalLanguage = movie.value(forKey: "originalLanguage") as? String

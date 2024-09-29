@@ -10,8 +10,8 @@ import Combine
 import UIKit
 
 class MovieDetailsViewModel{
-    private var cancellables = Set<AnyCancellable>()
-    private var networkManager: NetworkManagerProtocol?
+    var cancellables = Set<AnyCancellable>()
+    var networkManager: NetworkManagerProtocol?
     var urlManager: URLManagerProtocol?
     var movieId : Int?
     
