@@ -40,7 +40,7 @@ class MovieDetailsVC: UIViewController {
                             self.fetchDataFromAPI()
                         } else {
                             //  is offline
-                          
+                            self.fetchDataFromCoreData()
                         }
                     }
                 }
@@ -52,6 +52,15 @@ class MovieDetailsVC: UIViewController {
     }
     func fetchDataFromAPI(){
         viewModel.fetchMovieDetails()
+        setUpViewComponents()
+        
+    }
+    func fetchDataFromCoreData(){
+        viewModel.loadDatafromCoreData()
+        setUpViewComponents()
+        
+    }
+    func setUpViewComponents(){
         viewModel.$movie.sink { [weak self] _ in
                     DispatchQueue.main.async {
                         guard let self = self else{return}
@@ -71,7 +80,7 @@ class MovieDetailsVC: UIViewController {
                         if movieData.genres?.count ?? 0 > 1{
                             self.genreLbl.text = "\(movieData.genres?[0].name ?? ""),\(movieData.genres?[1].name ?? "")"}
                         else{
-                            
+
                                 self.genreLbl.text = "\(movieData.genres?[0].name ?? "")"
                         }
                         self.cancellabl = self.viewModel.fetchPosterImage()
